@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "6281168856700";
+export const WHATSAPP_NUMBER = "6281265110101";
 
 export const WHATSAPP_MESSAGES = {
   home: `
@@ -13,6 +13,8 @@ Tahun Kendaraan:
 Warna Kendaraan:
 Jenis Layanan:
 
+Topping:
+
 Metode Pembayaran: Transfer / Tunai
 
 Jadwal Kunjungan:
@@ -22,7 +24,7 @@ Estimasi Waktu Tiba di Lokasi:
 Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
 
 Hormat kami,
-SG Auto Care`,
+topclean`,
   contact:
-    "Hello SG Auto Care, saya ingin menghubungi SG Auto Care.",
+    "Hello topclean, saya ingin menghubungi topclean.",
 };

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "../atoms/Logo";
-import { FaWhatsapp, FaInstagram, FaLocationArrow, FaPhone, FaClock  } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaLocationArrow, FaPhone, FaClock, FaTiktok  } from "react-icons/fa";
 import {
   WHATSAPP_NUMBER,
   WHATSAPP_MESSAGES,
@@ -15,8 +15,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="mt-4 text-sm text-zinc-600 leading-relaxed">
-            SG Auto Care provides professional car wash and
-            detailing services with premium quality.
+            TOPCLEAN provides professional Home Wash, Detailing, Coating, PPF, and Kaca Film services with premium quality.
           </p>
         </div>
 
@@ -65,11 +64,11 @@ export default function Footer() {
 
             <li>
               <a
-                href="tel:+6281168856700"
+                href="tel:+6281265110101"
                 className="flex items-center gap-2 hover:text-red-600"
               >
                 <FaPhone  className="text-red-500" />
-                <span>+62 811-6885-6700</span>
+                <span>+62 812-6511-0101</span>
               </a>
             </li>
 
@@ -89,13 +88,24 @@ export default function Footer() {
 
             <li>
               <a
-                href="https://www.instagram.com/sgautocaree?igsh=dWpvMGtnZ2l3a2ty"
+                href="https://www.instagram.com/topclean_medan?igsh=MWRnbnJ6OXhkdzYwcg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-red-600"
               >
                 <FaInstagram className="text-pink-600" />
-                <span>sgautocaree</span>
+                <span>topclean_medan</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@topclean01_medan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-red-600"
+              >
+                <FaTiktok  />
+                <span>topclean01_medan</span>
               </a>
             </li>
 
@@ -110,7 +120,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="text-center text-xs text-zinc-500 py-4 border-t">
-        © {new Date().getFullYear()} SG Auto Care. All rights reserved.
+        © {new Date().getFullYear()} TOPCLEAN. All rights reserved.
       </div>
     </footer>
   );

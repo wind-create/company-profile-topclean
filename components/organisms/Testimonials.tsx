@@ -3,15 +3,15 @@ import Heading from "../atoms/Heading";
 const testimonials = [
   {
     name: "Sutiansi Hartanta",
-    text: "Cuci dsini bersih, ruang tunggunya nyaman, ada free snack, toiletnya bersih.",
+    text: "Toko detailing dan coating yg hasilnya bagus dengan harga yg terjangkau",
   },
   {
-    name: "Willi Nardo",
-    text: "Coating mobil di SG Autocare hasilnya luar biasa. Cat jadi lebih glossy dan terlindungi. Penjelasan dari tim juga jelas dan profesional. Worth it!",
+    name: "Denni Boy",
+    text: "Homecarwash terbaik untuk wilayah Medan dan sekitarnya 👍👍",
   },
   {
     name: "Safri Yudha",
-    text: "Puas coating mobil di sini bahan bahan nya premium dan terjamin keasliannya Top banget",
+    text: "Tempat detailing terbaik di kota medan",
   },
 ];
 

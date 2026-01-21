@@ -10,7 +10,7 @@ export default function HomeCTA() {
           Ready to give your car the best treatment?
         </Heading>
         <p className="mt-4 text-zinc-600">
-          Choose a package and book your auto care service today.
+          Choose a package and book your service today.
         </p>
 
         <div className="mt-8 flex justify-center gap-4">
@@ -19,7 +19,7 @@ export default function HomeCTA() {
           </Link>
 
           <a
-            href="https://wa.me/6281168856700"
+            href="https://wa.me/6281265110101"
             target="_blank"
             className="border border-zinc-900 px-6 py-3 rounded-full font-semibold text-sm hover:bg-zinc-900 hover:text-white transition"
           >

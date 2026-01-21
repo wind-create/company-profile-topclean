@@ -7,9 +7,9 @@ export default function AboutPage() {
       {/* Header */}
       <section className="bg-zinc-50">
         <div className="max-w-5xl mx-auto px-6 py-24">
-          <Heading level={1}>About SG Auto Care</Heading>
+          <Heading level={1}>About TOPCLEAN</Heading>
           <p className="mt-6 text-zinc-600 text-lg leading-relaxed">
-            SG Auto Care is a professional auto care and detailing service
+            TOPCLEAN is a professional Home Wash, Detailing, Coating, PPF, and Kaca Film service
             dedicated to delivering premium results with precision, care,
             and attention to detail.
           </p>
@@ -21,7 +21,7 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto px-6 py-20">
           <Heading level={2}>Our Story</Heading>
           <p className="mt-6 text-zinc-600 leading-relaxed">
-            Founded with a passion for automotive care, SG Auto Care was built
+            Founded with a passion for automotive care, TOPCLEAN was built
             on the belief that every vehicle deserves the highest level of
             treatment. From daily-driven cars to premium vehicles, we treat
             every car as if it were our own.
@@ -75,8 +75,8 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto px-6 py-20">
           <Heading level={2}>Our Commitment</Heading>
           <p className="mt-6 text-zinc-600 leading-relaxed">
-            At SG Auto Care, we are committed to providing reliable, consistent,
-            and premium auto care services. Whether it’s a regular wash or
+            At TOPCLEAN, we are committed to providing reliable, consistent,
+            and premium services. Whether it’s a regular wash or
             advanced detailing, our goal is to exceed your expectations every
             time.
           </p>
@@ -86,7 +86,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="bg-zinc-50">
         <div className="max-w-5xl mx-auto px-6 py-20 text-center">
-          <Heading level={2}>Experience the SG Auto Care Difference</Heading>
+          <Heading level={2}>Experience the TOPCLEAN Difference</Heading>
           <p className="mt-4 text-zinc-600">
             Let us take care of your vehicle with professional treatment
             and premium results.

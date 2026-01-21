@@ -39,7 +39,7 @@ export default function GoogleMapsSection() {
           <div>
             <p className="font-semibold text-zinc-900">Directions</p>
             <a
-              href="https://maps.app.goo.gl/t7cxGLsaL66GbLnw8"
+              href="https://maps.app.goo.gl/CpJcWt7iumv7cUed6"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-2 font-semibold text-red-600 hover:underline"

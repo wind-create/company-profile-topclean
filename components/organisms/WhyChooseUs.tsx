@@ -15,7 +15,7 @@ const reasons = [
   },
   {
     title: "Trusted by Customers",
-    desc: "Many satisfied customers trust SG Auto Care for their vehicles.",
+    desc: "Many satisfied customers trust TOPCLEAN for their vehicles.",
   },
 ];
 
@@ -24,7 +24,7 @@ export default function WhyChooseUs() {
     <section className="bg-white">
       <div className="max-w-7xl mx-auto px-6 py-24">
         <div className="max-w-2xl">
-          <Heading level={2}>Why Choose SG Auto Care</Heading>
+          <Heading level={2}>Why Choose TOPCLEAN</Heading>
           <p className="mt-4 text-zinc-600 text-lg">
             We deliver more than just a clean car.
           </p>

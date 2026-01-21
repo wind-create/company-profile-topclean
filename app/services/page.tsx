@@ -7,26 +7,35 @@ import ServicePackageCard from "@/components/molecules/ServicePackageCard";
 import { servicePackages } from "@/constants/services";
 
 export default function ServicesPage() {
-  const [selectedPackages, setSelectedPackages] = useState<string[]>([]);
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedToppings, setSelectedToppings] = useState<string[]>([]);
 
   const addPackage = (name: string) => {
-    setSelectedPackages((prev) =>
-      prev.includes(name) ? prev : [...prev, name]
-    );
+    if (name.startsWith("Topping -")) {
+      const topping = name.replace("Topping - ", "");
+      setSelectedToppings((prev) =>
+        prev.includes(topping) ? prev : [...prev, topping]
+      );
+    } else {
+      setSelectedServices((prev) =>
+        prev.includes(name) ? prev : [...prev, name]
+      );
+    }
   };
 
-  const removePackage = (name: string) => {
-    setSelectedPackages((prev) =>
-      prev.filter((pkg) => pkg !== name)
-    );
+  const removeService = (name: string) => {
+    setSelectedServices((prev) => prev.filter((s) => s !== name));
   };
 
-  const hasSelection = selectedPackages.length > 0;
+  const removeTopping = (name: string) => {
+    setSelectedToppings((prev) => prev.filter((t) => t !== name));
+  };
 
-  const waMessage = encodeURIComponent(
-    `
-    Halo, terima kasih atas partisipasi Bapak/Ibu dalam menggunakan layanan kami.
-Untuk proses pendaftaran, mohon kesediaannya mengonfirmasi data berikut:
+  const hasSelection =
+    selectedServices.length > 0 || selectedToppings.length > 0;
+
+  const waMessage = encodeURIComponent(`
+Halo, terima kasih atas partisipasi Bapak/Ibu dalam menggunakan layanan kami.
 
 Nama:
 No. Telepon:
@@ -34,8 +43,16 @@ Jenis Mobil:
 Nomor Plat BK:
 Tahun Kendaraan:
 Warna Kendaraan:
+
 Jenis Layanan:
-${selectedPackages.map((pkg) => `• ${pkg}`).join("\n")}
+${selectedServices.map((s) => `• ${s}`).join("\n")}
+
+Topping:
+${
+  selectedToppings.length > 0
+    ? selectedToppings.map((t) => `• ${t}`).join("\n")
+    : "-"
+}
 
 Metode Pembayaran: Transfer / Tunai
 
@@ -43,12 +60,9 @@ Jadwal Kunjungan:
 Hari/Tanggal:
 Estimasi Waktu Tiba di Lokasi:
 
-Atas perhatian dan kerja samanya, kami ucapkan terima kasih.
-
 Hormat kami,
-SG Auto Care
-    `
-  );
+topclean
+`);
 
   return (
     <MainLayout waPage="services">
@@ -56,9 +70,6 @@ SG Auto Care
       <section className="bg-zinc-50">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <Heading level={1}>Car Wash Packages</Heading>
-          <p className="mt-4 max-w-2xl text-zinc-600 text-lg">
-            Select one or more packages. Selected packages will appear on the right (desktop) or above (mobile).
-          </p>
         </div>
       </section>
 
@@ -69,44 +80,7 @@ SG Auto Care
             hasSelection ? "lg:grid-cols-[1fr_360px]" : "grid-cols-1"
           }`}
         >
-          {/* 🔼 MOBILE — SELECTED PACKAGES (ATAS) */}
-          {hasSelection && (
-            <div className="lg:hidden">
-              <div className="bg-white border border-zinc-200 rounded-2xl p-6">
-                <h3 className="font-semibold text-lg mb-4">
-                  Selected Packages
-                </h3>
-
-                <ul className="space-y-2">
-                  {selectedPackages.map((pkg) => (
-                    <li
-                      key={pkg}
-                      className="flex justify-between items-center bg-zinc-50 px-3 py-2 rounded-lg text-sm"
-                    >
-                      <span>{pkg}</span>
-                      <button
-                        onClick={() => removePackage(pkg)}
-                        className="text-red-600 hover:underline"
-                      >
-                        Remove
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={`https://wa.me/6281168856700?text=${waMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block mt-6 text-center bg-red-600 text-white px-4 py-3 rounded-full font-semibold hover:bg-red-700 transition"
-                >
-                  Book via WhatsApp
-                </a>
-              </div>
-            </div>
-          )}
-
-          {/* LEFT — SERVICES */}
+          {/* LEFT — SERVICE CARDS */}
           <div
             className={`grid gap-6 sm:grid-cols-2 ${
               hasSelection ? "lg:grid-cols-2" : "lg:grid-cols-3"
@@ -116,35 +90,41 @@ SG Auto Care
               <ServicePackageCard
                 key={pkg.name}
                 name={pkg.name}
-                items={pkg.items}        // boleh undefined sekarang
+                items={pkg.items}
                 sizes={pkg.sizes}
                 price={pkg.price}
                 pricesBySize={pkg.pricesBySize}
                 variants={pkg.variants}
                 onAdd={addPackage}
               />
-
             ))}
           </div>
 
-          {/* RIGHT — SELECTED PACKAGES (DESKTOP) */}
+          {/* RIGHT — SIDEBAR */}
           {hasSelection && (
             <aside className="hidden lg:block">
               <div className="sticky top-28 bg-white border border-zinc-200 rounded-2xl p-6">
-                <h3 className="font-semibold text-lg mb-4">
-                  Selected Packages
-                </h3>
+                <h3 className="font-semibold mb-3">Selected Packages</h3>
 
-                <ul className="space-y-2">
-                  {selectedPackages.map((pkg) => (
-                    <li
-                      key={pkg}
-                      className="flex justify-between items-center bg-zinc-50 px-3 py-2 rounded-lg text-sm"
-                    >
-                      <span>{pkg}</span>
+                <ul className="space-y-2 text-sm">
+                  {selectedServices.map((s) => (
+                    <li key={s} className="flex justify-between">
+                      <span>{s}</span>
                       <button
-                        onClick={() => removePackage(pkg)}
-                        className="text-red-600 hover:underline"
+                        onClick={() => removeService(s)}
+                        className="text-red-600"
+                      >
+                        Remove
+                      </button>
+                    </li>
+                  ))}
+
+                  {selectedToppings.map((t) => (
+                    <li key={t} className="flex justify-between">
+                      <span>{t}</span>
+                      <button
+                        onClick={() => removeTopping(t)}
+                        className="text-red-600"
                       >
                         Remove
                       </button>
@@ -155,8 +135,7 @@ SG Auto Care
                 <a
                   href={`https://wa.me/6281168856700?text=${waMessage}`}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="block mt-6 text-center bg-red-600 text-white px-4 py-3 rounded-full font-semibold hover:bg-red-700 transition"
+                  className="block mt-6 text-center bg-red-600 text-white py-3 rounded-full font-semibold"
                 >
                   Book via WhatsApp
                 </a>

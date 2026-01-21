@@ -8,9 +8,9 @@ import HomeCTA from "@/components/organisms/HomeCTA";
 import GoogleMapsSection from "@/components/organisms/GoogleMapsSection";
 
 export const metadata: Metadata = {
-  title: "SG Auto Care | Premium Car Wash & Detailing",
+  title: "TOPCLEAN | Premium Car Wash & Polish",
   description:
-    "SG Auto Care provides professional car wash, detailing, and coating services with premium results.",
+    "TOPCLEAN provides professional car wash, and Polish services with premium results.",
 };
 
 export default function HomePage() {

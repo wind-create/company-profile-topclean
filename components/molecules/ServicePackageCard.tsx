@@ -14,7 +14,7 @@ type Price = {
 
 type ServiceVariant = {
   name: string;
-  pricesBySize: Record<VehicleSize, Price>;
+  pricesBySize?: Record<VehicleSize, Price>;
 };
 
 type Props = {

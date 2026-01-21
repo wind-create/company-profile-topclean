@@ -2,13 +2,13 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sgautocare.com"),
+  metadataBase: new URL("https://www.topclean.id/"),
   title: {
-    default: "SG Auto Care",
-    template: "%s | SG Auto Care",
+    default: "TOPCLEAN",
+    template: "%s | TOPCLEAN",
   },
   description:
-    "Professional auto care, car wash, detailing, and coating services.",
+    "Professional car wash, and Polish services.",
 };
 
 export default function RootLayout({

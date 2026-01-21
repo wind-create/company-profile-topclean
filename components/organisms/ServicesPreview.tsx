@@ -10,7 +10,7 @@ export default function ServicesPreview() {
         <div className="max-w-2xl">
           <Heading level={2}>Our Car Wash Packages</Heading>
           <p className="mt-4 text-zinc-600 text-lg">
-            Professional auto care packages designed for different needs.
+            Professional packages designed for different needs.
           </p>
         </div>
 

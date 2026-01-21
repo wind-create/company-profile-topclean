@@ -1,3 +1,5 @@
+"use client";
+
 import Modal from "../atoms/Modal";
 import Heading from "../atoms/Heading";
 import Button from "../atoms/Button";
@@ -13,7 +15,8 @@ type Price = {
 
 type ServiceVariant = {
   name: string;
-  pricesBySize: Record<VehicleSize, Price>;
+  pricesBySize?: Record<VehicleSize, Price>;
+  price?: Price;
 };
 
 type Props = {
@@ -22,14 +25,9 @@ type Props = {
   name: string;
   items: string[];
 
-  // SIMPLE
-  price?: Price;
-
-  // SIZE BASED
   sizes?: VehicleSize[];
+  price?: Price;
   pricesBySize?: Record<VehicleSize, Price>;
-
-  // ADVANCED
   variants?: ServiceVariant[];
 
   onAdd: (name: string) => void;
@@ -46,6 +44,9 @@ export default function ServicePackageModal({
   variants,
   onAdd,
 }: Props) {
+  // 🔥 INI WAJIB ADA
+  if (!isOpen) return null;
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       {/* HEADER */}
@@ -71,130 +72,72 @@ export default function ServicePackageModal({
         </ul>
       )}
 
-      {/* 🔥 VARIANTS (Exterior / Interior / Full Detailing) */}
+      {/* VARIANTS */}
       {variants && (
-        <div className="mt-8 space-y-6">
+        <div className="mt-6 space-y-4">
           {variants.map((variant) => (
             <div key={variant.name}>
               <p className="font-semibold mb-2">{variant.name}</p>
 
-              <div className="space-y-2 text-sm">
-                {Object.entries(variant.pricesBySize).map(
-                  ([size, p]) => (
-                    <div
-                      key={size}
-                      className="flex justify-between items-center border border-zinc-200 rounded-lg px-4 py-2"
-                    >
-                      <span>{size}</span>
-
-                      {p.discount ? (
-                        <div className="flex items-center gap-3">
-                          <span className="text-zinc-400 line-through">
-                            {formatPrice(p.original)}
-                          </span>
-                          <span className="font-semibold text-red-600">
-                            {formatPrice(p.discount)}
-                          </span>
-                        </div>
-                      ) : (
+              {variant.pricesBySize && (
+                <div className="space-y-2 text-sm">
+                  {Object.entries(variant.pricesBySize).map(
+                    ([size, p]) => (
+                      <div
+                        key={size}
+                        className="flex justify-between border rounded-lg px-4 py-2"
+                      >
+                        <span>{size}</span>
                         <span className="font-semibold text-red-600">
-                          {formatPrice(p.original)}
+                          {formatPrice(p.discount ?? p.original)}
                         </span>
-                      )}
-                    </div>
-                  )
-                )}
-              </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
+
+              {variant.price && (
+                <div className="flex justify-between items-center border rounded-lg px-4 py-2">
+                  <span>{variant.name}</span>
+                  <Button
+                    variant="outline"
+                    onClick={() =>
+                      onAdd(`Topping - ${variant.name}`)
+                    }
+                  >
+                    Add
+                  </Button>
+                </div>
+              )}
             </div>
           ))}
         </div>
       )}
 
-      {/* 💰 PRICE — TANPA SIZE */}
-      {price && !variants && (
+      {/* SIMPLE PRICE */}
+      {!variants && price && (
         <div className="mt-6">
-          <p className="font-semibold mb-1">Price</p>
-
-          {price.discount ? (
-            <div className="flex items-center gap-3">
-              <span className="text-zinc-400 line-through text-sm">
-                {formatPrice(price.original)}
-              </span>
-              <span className="text-lg font-bold text-red-600">
-                {formatPrice(price.discount)}
-              </span>
-            </div>
-          ) : (
-            <span className="text-lg font-bold text-red-600">
-              {formatPrice(price.original)}
-            </span>
-          )}
-        </div>
-      )}
-
-      {/* 💰 PRICE — DENGAN SIZE */}
-      {pricesBySize && !variants && (
-        <div className="mt-6">
-          <p className="font-semibold mb-2">
-            Price by Vehicle Size
-          </p>
-
-          <div className="space-y-2 text-sm">
-            {Object.entries(pricesBySize).map(([size, p]) => (
-              <div
-                key={size}
-                className="flex justify-between items-center border border-zinc-200 rounded-lg px-4 py-2"
-              >
-                <span>{size}</span>
-
-                {p.discount ? (
-                  <div className="flex items-center gap-3">
-                    <span className="text-zinc-400 line-through">
-                      {formatPrice(p.original)}
-                    </span>
-                    <span className="font-semibold text-red-600">
-                      {formatPrice(p.discount)}
-                    </span>
-                  </div>
-                ) : (
-                  <span className="font-semibold text-red-600">
-                    {formatPrice(p.original)}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* SIZE INFO (OPTIONAL VISUAL) */}
-      {sizes && !variants && (
-        <div className="mt-6">
-          <p className="font-semibold mb-2">Ukuran Mobil</p>
-          <div className="flex gap-2">
-            {sizes.map((size) => (
-              <span
-                key={size}
-                className="px-3 py-1 text-sm border border-zinc-300 rounded-full"
-              >
-                {size}
-              </span>
-            ))}
-          </div>
+          <p className="font-semibold">Price</p>
+          <span className="text-lg font-bold text-red-600">
+            {formatPrice(price.discount ?? price.original)}
+          </span>
         </div>
       )}
 
       {/* ACTION */}
-      <div className="mt-8">
-        <Button
-          onClick={() => {
-            onAdd(name);
-            onClose();
-          }}
-        >
-          Add Package
-        </Button>
-      </div>
+      {!variants && (
+        <div className="mt-8">
+          <Button
+            onClick={() => {
+              onAdd(name);
+              onClose();
+            }}
+          >
+            Add Package
+          </Button>
+        </div>
+      )}
     </Modal>
   );
 }

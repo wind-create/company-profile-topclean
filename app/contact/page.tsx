@@ -12,7 +12,7 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto px-6 py-24">
           <Heading level={1}>Contact Us</Heading>
           <p className="mt-6 text-zinc-600 text-lg">
-            Get in touch with SG Auto Care for booking, inquiries,
+            Get in touch with TOPCLEAN for booking, inquiries,
             or consultation about our services.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function ContactPage() {
         Fast response for booking & questions
       </p>
       <a
-        href="https://wa.me/6281168856700"
+        href="https://wa.me/6281265110101"
         target="_blank"
         className="inline-block mt-4 font-semibold text-red-600 hover:underline"
       >
@@ -44,24 +44,24 @@ export default function ContactPage() {
         Call us during business hours
       </p>
       <a
-        href="tel:+6281168856700"
+        href="tel:+6281265110101"
         className="inline-block mt-4 font-semibold text-red-600 hover:underline"
       >
-        +62 811-6885-6700 →
+        +62 812-6511-0101 →
       </a>
     </div>
 
     {/* Email */}
     <div className="border border-zinc-200 rounded-2xl p-6">
-      <h3 className="font-semibold text-lg">Email</h3>
+      <h3 className="font-semibold text-lg">Tiktok</h3>
       <p className="mt-3 text-sm text-zinc-600">
         For general inquiries
       </p>
       <a
-        href="mailto:sgautocaree5670@gmail.com"
+        href="https://www.tiktok.com/@topclean01_medan"
         className="block mt-4 font-semibold text-red-600 hover:underline break-all"
       >
-        sgautocaree5670@gmail.com →
+        Chat via Tiktok →
       </a>
     </div>
 
@@ -72,7 +72,7 @@ export default function ContactPage() {
         Fast response for booking & questions
       </p>
       <a
-        href="https://www.instagram.com/sgautocaree"
+        href="https://www.instagram.com/topclean_medan"
         target="_blank"
         className="inline-block mt-4 font-semibold text-red-600 hover:underline"
       >
@@ -86,11 +86,11 @@ export default function ContactPage() {
 
 
       {/* Feedback Form */}
-      <section className="bg-zinc-50">
+      {/* <section className="bg-zinc-50">
         <div className="max-w-5xl mx-auto px-6 py-20">
           <FeedbackForm />
         </div>
-      </section>
+      </section> */}
 
 
       {/* Google Maps */}
